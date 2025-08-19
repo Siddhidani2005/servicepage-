@@ -1,113 +1,132 @@
+"use client";
+
 import { Card, CardContent } from "./ui/card";
-import { Clock, Eye, TrendingUp, Globe, Users, BarChart3, DollarSign } from "lucide-react";
+import {
+  Clock,
+  Eye,
+  TrendingUp,
+  Globe,
+  Users,
+  BarChart3,
+  DollarSign,
+} from "lucide-react";
+import React from "react";
+
+// 🎨 Allowed colors
+type BenefitColor =
+  | "blue"
+  | "purple"
+  | "green"
+  | "orange"
+  | "pink"
+  | "indigo"
+  | "emerald";
+
+// ✅ Benefit type
+interface Benefit {
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  color: BenefitColor;
+}
+
+// 🎨 Color map with strict typing
+const colorMap: Record<BenefitColor, string> = {
+  blue: "bg-blue-100 text-blue-600",
+  purple: "bg-purple-100 text-purple-600",
+  green: "bg-green-100 text-green-600",
+  orange: "bg-orange-100 text-orange-600",
+  pink: "bg-pink-100 text-pink-600",
+  indigo: "bg-indigo-100 text-indigo-600",
+  emerald: "bg-emerald-100 text-emerald-600",
+};
 
 export function BusinessBenefits() {
-  const benefits = [
+  const benefits: Benefit[] = [
     {
       icon: Clock,
       title: "24/7 Online Presence",
-      description: "Your customers can learn about your business, explore your services, and even make purchases—anytime, anywhere—without being restricted by store hours or location.",
-      color: "blue"
+      description:
+        "Your customers can learn about your business, explore your services, and even make purchases anytime, anywhere.",
+      color: "blue",
     },
     {
       icon: Eye,
-      title: "First Impressions Matter",
-      description: "A sleek, fast-loading, and well-designed website builds trust instantly. Studies show that users form an opinion about a site within 0.05 seconds.",
-      color: "purple"
+      title: "Increased Visibility",
+      description:
+        "Appear in search engines and attract new customers actively looking for what you offer.",
+      color: "purple",
     },
     {
       icon: TrendingUp,
-      title: "Increased Credibility & Brand Value",
-      description: "An outdated or poorly designed site sends the wrong message. A professionally developed platform positions your brand as modern, reliable, and trustworthy.",
-      color: "green"
+      title: "Growth Opportunities",
+      description:
+        "Reach new markets, expand your audience, and grow faster with an online presence.",
+      color: "green",
     },
     {
       icon: Globe,
-      title: "Wider Reach & Market Expansion",
-      description: "Unlike physical stores, a website can reach global audiences without the need for a physical presence—opening up entirely new revenue streams.",
-      color: "orange"
+      title: "Global Reach",
+      description:
+        "Break geographical barriers and connect with potential clients worldwide.",
+      color: "orange",
     },
     {
       icon: Users,
-      title: "Better Customer Engagement",
-      description: "Web apps allow for personalized user experiences, chat support, feedback systems, and interactive tools that increase customer satisfaction.",
-      color: "pink"
+      title: "Customer Engagement",
+      description:
+        "Offer better support, collect feedback, and engage directly with your audience.",
+      color: "pink",
     },
     {
       icon: BarChart3,
-      title: "Scalability & Flexibility",
-      description: "Custom web development ensures your site/app can evolve as your business grows—adding new features, integrating third-party tools, or handling more users.",
-      color: "indigo"
+      title: "Data & Insights",
+      description:
+        "Track customer behavior, analyze performance, and make informed business decisions.",
+      color: "indigo",
     },
     {
       icon: DollarSign,
-      title: "Cost Efficiency in the Long Run",
-      description: "While there is an upfront investment, a well-built website or app reduces long-term costs by automating processes, minimizing errors, and increasing sales conversions.",
-      color: "emerald"
-    }
+      title: "Boost Sales",
+      description:
+        "Offer online ordering, booking, or product sales to increase revenue streams.",
+      color: "emerald",
+    },
   ];
 
-  const colorMap = {
-    blue: "bg-blue-100 text-blue-600",
-    purple: "bg-purple-100 text-purple-600",
-    green: "bg-green-100 text-green-600",
-    orange: "bg-orange-100 text-orange-600",
-    pink: "bg-pink-100 text-pink-600",
-    indigo: "bg-indigo-100 text-indigo-600",
-    emerald: "bg-emerald-100 text-emerald-600"
-  };
-
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-            Business Benefits of Professional Web Development
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            A high-quality website or web app can be a game-changer for any business. Here's why investing 
-            in professional web development delivers exceptional returns.
-          </p>
-        </div>
+    <section className="py-16 bg-gray-50 dark:bg-gray-900">
+      <div className="container mx-auto px-4">
+        {/* Heading */}
+        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
+          Why Your Business Needs a Website
+        </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {benefits.map((benefit, index) => (
-            <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-8">
-                <div className={`w-16 h-16 rounded-lg flex items-center justify-center mb-6 ${colorMap[benefit.color]}`}>
-                  <benefit.icon className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{benefit.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <div className="bg-white rounded-2xl shadow-xl p-8 lg:p-12 max-w-4xl mx-auto">
-            <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6">
-              Ready to Transform Your Business?
-            </h3>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Don't let your competitors get ahead. A professional web presence is no longer optional—it's essential 
-              for business success in today's digital marketplace.
-            </p>
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-blue-600 mb-2">500+</div>
-                <div className="text-gray-600">Happy Clients</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-blue-600 mb-2">10+</div>
-                <div className="text-gray-600">Years Experience</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-blue-600 mb-2">99%</div>
-                <div className="text-gray-600">Client Satisfaction</div>
-              </div>
-            </div>
-          </div>
+        {/* Grid */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {benefits.map((benefit, index) => {
+            const Icon = benefit.icon;
+            return (
+              <Card
+                key={index}
+                className="shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <CardContent className="p-6">
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${colorMap[benefit.color]}`}
+                  >
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {benefit.description}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
