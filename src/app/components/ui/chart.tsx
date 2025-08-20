@@ -15,7 +15,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts"
-import { cn } from "@/lib/utils"
+import { cn } from "./utils"
+
 
 // Type for Chart Config
 export type ChartConfig = {
